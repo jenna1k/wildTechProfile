@@ -1,4 +1,6 @@
 import React from 'react';
+import BigCard from './Component/CardGallery/BigCard';
+import SmallCard from './Component/CardGallery/SmallCard';
 
 const students = [
   {
