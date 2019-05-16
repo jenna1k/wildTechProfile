@@ -1,256 +1,70 @@
 import React, { Component } from "react";
 import BigCard from "./Component/CardGallery/BigCard";
-import Footer from "../src/Component/Footer/Footer";
-const students = [
-  {
-    basics: {
-      name: "Camille Doe",
-      picture: "",
-      email: "Camille@gmail.com",
-      website: "http://Camilledoe.com",
-      summary: "A summary of Camille Doe...",
-      location: {
-        country: "Germany"
-      },
-      profiles: [
-        {
-          network: "Github",
-          username: "Camille",
-          url: "https://github.com/Camille"
-        },
-        {
-          network: "Linkedin",
-          username: "Camille",
-          url: "https://linkedin.com/Camille"
-        }
-      ]
-    },
-    projects: [
-      {
-        title: "Project",
-        date: "2014-11-01",
-        summary: "There is no spoon.",
-        technologies: ["css", "html", "react", "bootstrap"]
-      }
-    ],
-    favorite_programming_languages: ["HTML5", "CSS3"],
-    interests: [
-      {
-        name: "Linux",
-        keywords: ["git", "terminal"]
-      }
-    ]
-  },
-  {
-    basics: {
-      name: "Jenna Doe",
-      picture: "",
-      email: "Jenna@gmail.com",
-      website: "http://Jennadoe.com",
-      summary: "A summary of Jenna Doe...",
-      location: {
-        country: "Germany"
-      },
-      profiles: [
-        {
-          network: "Github",
-          username: "Jenna",
-          url: "https://github.com/Jenna"
-        },
-        {
-          network: "Linkedin",
-          username: "Jenna",
-          url: "https://linkedin.com/Jenna"
-        }
-      ]
-    },
-    projects: [
-      {
-        title: "Project",
-        date: "2014-11-01",
-        summary: "There is no spoon.",
-        technologies: ["css", "html", "react", "bootstrap"]
-      }
-    ],
-    favorite_programming_languages: ["HTML5", "CSS3"],
-    interests: [
-      {
-        name: "Linux",
-        keywords: ["git", "terminal"]
-      }
-    ]
-  },
-  {
-    basics: {
-      name: "Raphael Doe",
-      picture: "",
-      email: "Raphael@gmail.com",
-      website: "http://Raphaeldoe.com",
-      summary: "A summary of Raphael Doe...",
-      location: {
-        country: "Germany"
-      },
-      profiles: [
-        {
-          network: "Github",
-          username: "Raphael",
-          url: "https://github.com/Raphael"
-        },
-        {
-          network: "Linkedin",
-          username: "Raphael",
-          url: "https://linkedin.com/Raphael"
-        }
-      ]
-    },
-    projects: [
-      {
-        title: "Project",
-        date: "2014-11-01",
-        summary: "There is no spoon.",
-        technologies: ["css", "html", "react", "bootstrap"]
-      }
-    ],
-    favorite_programming_languages: ["HTML5", "CSS3"],
-    interests: [
-      {
-        name: "Linux",
-        keywords: ["git", "terminal"]
-      }
-    ]
-  },
-  {
-    basics: {
-      name: "Asieh Doe",
-      picture: "",
-      email: "Asieh@gmail.com",
-      website: "http://Asiehdoe.com",
-      summary: "A summary of Asieh Doe...",
-      location: {
-        country: "Germany"
-      },
-      profiles: [
-        {
-          network: "Github",
-          username: "Asieh",
-          url: "https://github.com/Asieh"
-        },
-        {
-          network: "Linkedin",
-          username: "Asieh",
-          url: "https://linkedin.com/Asieh"
-        }
-      ]
-    },
-    projects: [
-      {
-        title: "Project",
-        date: "2014-11-01",
-        summary: "There is no spoon.",
-        technologies: ["css", "html", "react", "bootstrap"]
-      }
-    ],
-    favorite_programming_languages: ["HTML5", "CSS3"],
-    interests: [
-      {
-        name: "Linux",
-        keywords: ["git", "terminal"]
-      }
-    ]
-  },
-  {
-    basics: {
-      name: "Anastasia Doe",
-      picture: "",
-      email: "Anastasia@gmail.com",
-      website: "http://Anastasiadoe.com",
-      summary: "A summary of Anastasia Doe...",
-      location: {
-        country: "Germany"
-      },
-      profiles: [
-        {
-          network: "Github",
-          username: "Anastasia",
-          url: "https://github.com/Anastasia"
-        },
-        {
-          network: "Linkedin",
-          username: "Anastasia",
-          url: "https://linkedin.com/Anastasia"
-        }
-      ]
-    },
-    projects: [
-      {
-        title: "Project",
-        date: "2014-11-01",
-        summary: "There is no spoon.",
-        technologies: ["css", "html", "react", "bootstrap"]
-      }
-    ],
-    favorite_programming_languages: ["HTML5", "CSS3"],
-    interests: [
-      {
-        name: "Linux",
-        keywords: ["git", "terminal"]
-      }
-    ]
-  },
-  {
-    basics: {
-      name: "Betta Doe",
-      picture: "",
-      email: "Betta@gmail.com",
-      website: "http://Bettadoe.com",
-      summary: "A summary of Betta Doe...",
-      location: {
-        country: "Germany"
-      },
-      profiles: [
-        {
-          network: "Github",
-          username: "Betta",
-          url: "https://github.com/Betta"
-        },
-        {
-          network: "Linkedin",
-          username: "Betta",
-          url: "https://linkedin.com/Betta"
-        }
-      ]
-    },
-    projects: [
-      {
-        title: "Project",
-        date: "2014-11-01",
-        summary: "There is no spoon.",
-        technologies: ["css", "html", "react", "bootstrap"]
-      }
-    ],
-    favorite_programming_languages: ["HTML5", "CSS3"],
-    interests: [
-      {
-        name: "Linux",
-        keywords: ["git", "terminal"]
-      }
-    ]
-  }
-];
+import SearchBar from "./Component/Header/SearchBar";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      studentsInfo: [],
+      search: ""
+    };
+
+    this.searchClick = this.searchClick.bind(this);
+    this.searchChange = this.searchChange.bind(this);
   }
+
+  componentDidMount() {
+    console.log("[Home] ComponientDidMount");
+    fetch("https://api-resume.herokuapp.com/api/v1/resume")
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          studentsInfo: data
+        })
+      )
+      .catch(() => alert("error api"));
+    console.log(
+      "studentsInfo : ",
+      this.state.studentsInfo.map(elem => console.log(elem))
+    );
+  }
+
+  searchClick(e) {
+    console.log("input is : ", this.state.search);
+    const filteredBySearch = this.state.studentsInfo.filter(elem =>
+      elem.basics.name.toLowerCase().includes(this.state.search.toLowerCase())
+    );
+    // .map(student => ({"name": student.basics.name}));
+    // .reduce((acc, ele) => )
+    console.log(filteredBySearch[0]);
+  }
+  // SOF
+  // const devReact = devs.filter(obj => obj.tech.includes("React"))
+  // .map(obj => ({"name":obj.name, "tech":obj.tech}));
+
+  // const devReact = devs.reduce((acc, ele) =>  ele.tech.includes("React") ? acc.concat({"name": ele.name, "tech":ele.tech}): acc ,[]);
+
+  searchChange(e) {
+    this.setState({ search: e.target.value });
+    console.log(e.target.value);
+  }
+
   render() {
     return (
       <div>
-        {students.map((studentInfo, index) => (
-          <section>
-            <BigCard key={index} {...studentInfo} />
-          </section>
-        ))}
+        <h1>Discover the profiles of our Fullstack Junior Developers</h1>
+        <SearchBar
+          search={this.state.search}
+          searchClick={this.searchClick}
+          searchChange={this.searchChange}
+        />
+        <h2>
+          {this.state.studentsInfo.map(studentInfo => (
+            // {...filteredBySearch}
+            <BigCard {...studentInfo} />
+          ))}
+        </h2>
       </div>
     );
   }
