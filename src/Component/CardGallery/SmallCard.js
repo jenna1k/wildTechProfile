@@ -5,12 +5,11 @@ const SmallCard = (props) => {
   return (
     <div>
       <Card>
-        <CardImg top width="" src="" alt=""/>
+        <CardImg top width="30%" src={props.basics.picture} alt={props.basics.name}/>
         <CardBody>
-          <CardTitle style={{color: 'black'}} >Name</CardTitle>
-          <CardSubtitle style={{color: 'black'}}>favorite programming languages</CardSubtitle>
-          <CardText style={{color: 'black'}}>summery</CardText>
-          <Button href="https://www.linkedin.com/in/asieh-mirzabagherian-1819b23b/">Contact</Button>
+          <CardTitle style={{color: 'black'}} >{props.basics.name}</CardTitle>
+          <CardSubtitle style={{color: 'black'}}>{props.favorite_programming_languages}</CardSubtitle>
+          <Button href={props.basics.email}>Contact</Button>
           <Button onClick={props.handleClick}> Further </Button>
         </CardBody>
       </Card>

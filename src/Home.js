@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
+import SmallCard from './Component/CardGallery/SmallCard';
 
 class Home extends Component {
   constructor(props) {
@@ -30,6 +31,11 @@ class Home extends Component {
             <BigCard {...studentInfo} />
           ))}
         </h2>
+        <h3>
+          {this.state.studentsInfo.map(studentInfo => (
+            <SmallCard {...studentInfo} />
+          ))}
+        </h3>
       </div>
     );
   }
