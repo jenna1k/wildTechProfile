@@ -27,4 +27,3 @@ const BigCard = (props) => {
 };
 
 export default BigCard;
-
