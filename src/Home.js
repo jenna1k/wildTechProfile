@@ -1,47 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
-import SmallCard from './Component/CardGallery/SmallCard';
 
 const students = [
-  {
-    basics: {
-      name: 'John Doe',
-      picture: '',
-      email: 'john@gmail.com',
-      website: 'http://johndoe.com',
-      summary: 'A summary of John Doe...',
-      location: {
-        country: 'Germany'
-      },
-      profiles: [
-        {
-          network: 'Github',
-          username: 'john',
-          url: 'https://github.com/john'
-        },
-        {
-          network: 'Linkedin',
-          username: 'john',
-          url: 'https://linkedin.com/john'
-        }
-      ]
-    },
-    projects: [
-      {
-        title: 'Project',
-        date: '2014-11-01',
-        summary: 'There is no spoon.',
-        technologies: ['css', 'html', 'react', 'bootstrap']
-      }
-    ],
-    favorite_programming_languages: ['HTML5', 'CSS3'],
-    interests: [
-      {
-        name: 'Linux',
-        keywords: ['git', 'terminal']
-      }
-    ]
-  },
   {
     basics: {
       name: 'Camille Doe',
@@ -278,17 +238,22 @@ const students = [
   }
 ];
 
-function Api() {
-  return (
-    <div>
-      {students.map((studentInfo, index) => (
-        <section>
-          <BigCard key={index} {...studentInfo} />
-          <SmallCard key={index} {...studentInfo} />
-        </section>
-      ))}
-    </div>
-  );
+class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div>
+        {students.map((studentInfo, index) => (
+          <section>
+            <BigCard key={index} {...studentInfo} />
+          </section>
+        ))}
+      </div>
+    );
+  }
 }
 
-export default Api;
+export default Home;
