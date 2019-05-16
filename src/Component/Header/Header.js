@@ -12,7 +12,7 @@ function Header() {
           <InputGroupAddon addonType="append">
             <InputGroupText>Search</InputGroupText>
           </InputGroupAddon>
-        </InputGroup>{' '}
+        </InputGroup>
       </div>
       <div className="wcs_header_items">
         <span>location filter</span>
