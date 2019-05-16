@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
+import Header from './Component/Header/Header'
 
 const students = [
   {
@@ -241,11 +242,20 @@ const students = [
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      searchfield: ''
+    };
   }
+
+  onClick(){
+
+  }
+
+
   render() {
     return (
       <div>
+        <Header {...students} />
         {students.map((studentInfo, index) => (
           <section>
             <BigCard key={index} {...studentInfo} />
