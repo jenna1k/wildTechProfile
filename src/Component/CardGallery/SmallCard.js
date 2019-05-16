@@ -5,7 +5,7 @@ const SmallCard = (props) => {
   return (
     <div>
       <Card>
-        <CardImg top width="30%" src="" alt=""/>
+        <CardImg top width="" src="" alt=""/>
         <CardBody>
           <CardTitle style={{color: 'black'}} >Name</CardTitle>
           <CardSubtitle style={{color: 'black'}}>favorite programming languages</CardSubtitle>
