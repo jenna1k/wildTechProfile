@@ -31,8 +31,11 @@ const BigCard = props => {
             Latest Project: Title: {props.projects.title} Technologies:{" "}
             {props.projects.technologies}
           </CardText>
-          <SocialIcon url={props.basics.profiles[0].url} />
-          <SocialIcon url={props.basics.profiles[1].url} />
+          <div>
+            {props.basics.profiles.map(profile => (
+              <SocialIcon url={profile.url} />
+            ))}
+          </div>
         </CardBody>
       </Card>
     </div>
