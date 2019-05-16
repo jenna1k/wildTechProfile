@@ -31,7 +31,8 @@ const BigCard = props => {
             Latest Project: Title: {props.projects.title} Technologies:{" "}
             {props.projects.technologies}
           </CardText>
-          <SocialIcon url="http://linkedin.com/in/jaketrent" />
+          <SocialIcon url={props.basics.profiles[0].url} />
+          <SocialIcon url={props.basics.profiles[1].url} />
         </CardBody>
       </Card>
     </div>
