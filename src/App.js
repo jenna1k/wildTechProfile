@@ -1,5 +1,4 @@
 import React from 'react';
-import Test from './Component/Header/test';
 import './App.css';
 import Home from './Home';
 
