@@ -10,6 +10,5 @@ const Search = ({searchfield, onClick}) => {
         </InputGroup>
     </div>
     );
-aaaaaaaaaaaaaaa
 }
 export default Search;
