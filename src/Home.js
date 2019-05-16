@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BigCard from "./Component/CardGallery/BigCard";
-
+import Footer from "../src/Component/Footer/Footer";
 const students = [
   {
     basics: {
