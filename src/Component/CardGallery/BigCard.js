@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import {
   Card,
-  Button,
-  CardLink,
+  //Button,
+  //CardLink,
   CardImg,
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
-  Container,
-  Row,
-  Col
-} from "reactstrap";
-import { SocialIcon } from "react-social-icons";
+  CardSubtitle
+  //Container,
+  //Row,
+  //Col
+} from 'reactstrap';
+import { SocialIcon } from 'react-social-icons';
 
 const BigCard = props => {
   return (
@@ -28,7 +28,7 @@ const BigCard = props => {
           <CardText>Bio: {props.basics.summary}</CardText>
           <CardText>Interests: {props.interests.name}</CardText>
           <CardText>
-            Latest Project: Title: {props.projects.title} Technologies:{" "}
+            Latest Project: Title: {props.projects.title} Technologies:{' '}
             {props.projects.technologies}
           </CardText>
           <div>
