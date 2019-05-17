@@ -32,13 +32,27 @@ class Home extends Component {
   searchClick(e){
     console.log('input is : ',this.state.search);
     this.setState({ filteredBySearch: this.state.studentsInfo
-      .filter(elem => elem.basics.name.toLowerCase().includes(this.state.search.toLowerCase()))})
-    // .map(student => ({"name": student.basics.name}));
-    // .reduce((acc, ele) => )
+      .filter(elem => {return elem.basics.name.toLowerCase().includes(this.state.search.toLowerCase()) || 
+      elem.basics.email.toLowerCase().includes(this.state.search.toLowerCase())  ||
+      // elem.basics.website.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.basics.summary.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.basics.location.country.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.basics.profiles[0].username.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.basics.profiles[0].url.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.basics.profiles[1].username.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.basics.profiles[1].url.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.projects[0].title.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.projects[0].summary.toLowerCase().includes(this.state.search.toLowerCase()) //||
+      // elem.projects[0].technologies.map(tech=>tech.toLowerCase().includes(this.state.search.toLowerCase()) //||
+      // elem.projects.toLowerCase().includes(this.state.search.toLowerCase())
+    }
+      )})
   }
   // SOF
   // const devReact = devs.filter(obj => obj.tech.includes("React"))
   // .map(obj => ({"name":obj.name, "tech":obj.tech}));
+
+  // result = array.filter(a => a.users.some(u => u.tags.some(t => t.tag.includes(tag))));
 
   // const devReact = devs.reduce((acc, ele) =>  ele.tech.includes("React") ? acc.concat({"name": ele.name, "tech":ele.tech}): acc ,[]);
   
