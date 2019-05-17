@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './Header.css';
 import SearchBar from './SearchBar';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem, Button } from 'reactstrap';
-// import DropdownTreeSelect from 'react-dropdown-tree-select'
-// import 'react-dropdown-tree-select/dist/styles.css'
+import DropdownTreeSelect from 'react-dropdown-tree-select'
+import 'react-dropdown-tree-select/dist/styles.css'
+import techOptions from './data.json';
 
 class Header extends Component {
   constructor(props) {
@@ -20,6 +21,13 @@ class Header extends Component {
     });
   }
   render() {
+
+    //parse all students and look in key projects->tech
+    //create an array techList
+    //upate array with all tech array.push(value.lowercase)
+    //remove duplicates
+    //create variable option= [{label: "" ,children:[]}]
+
     return (
       <div>
         <Navbar color="light" light expand="md" fixed="top" className="wcs-header">
@@ -41,12 +49,7 @@ class Header extends Component {
                 </NavItem>
               </div>
               <div className="wcs-header-searchfilter">
-                {/* <DropdownTreeSelect data='Germany' onChange={this.searchChange} placeholderText="Location"/> */}
-                <NavItem className="m-2">location filter</NavItem>
-                <NavItem className="m-2">programming languages filter</NavItem>
-                <Button tag="a" color="dark" size="medium" href="" target="_blank" className="m-2">
-                  Filter results
-                </Button>
+                <DropdownTreeSelect data={techOptions} placeholderText="Tech experience" onChange={this.props.searchChange}/>
               </div>
             </Nav>
           </Collapse>
