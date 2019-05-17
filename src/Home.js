@@ -54,42 +54,19 @@ class Home extends Component {
     let fuse = new Fuse(this.state.studentsInfo, options)    
     console.log(fuse.search(this.state.search));
 
-    this.setState({ filteredBySearch : fuse.search(this.state.search)
+    this.setState({ filteredBySearch : fuse.search(this.state.search) // update filtered list
     })
 
     console.log(this.state.filteredBySearch)
 
-    // this.setState({ filteredBySearch: this.state.studentsInfo
-    //   .filter(elem => {return elem.basics.name.toLowerCase().includes(this.state.search.toLowerCase()) || 
-    //   elem.basics.email.toLowerCase().includes(this.state.search.toLowerCase())  ||
-    //   // elem.basics.website.toLowerCase().includes(this.state.search.toLowerCase()) ||
-    //   elem.basics.summary.toLowerCase().includes(this.state.search.toLowerCase()) ||
-    //   elem.basics.location.country.toLowerCase().includes(this.state.search.toLowerCase()) ||
-    //   elem.basics.profiles[0].username.toLowerCase().includes(this.state.search.toLowerCase()) ||
-    //   elem.basics.profiles[0].url.toLowerCase().includes(this.state.search.toLowerCase()) ||
-    //   elem.basics.profiles[1].username.toLowerCase().includes(this.state.search.toLowerCase()) ||
-    //   elem.basics.profiles[1].url.toLowerCase().includes(this.state.search.toLowerCase()) ||
-    //   elem.projects[0].title.toLowerCase().includes(this.state.search.toLowerCase()) ||
-    //   elem.projects[0].summary.toLowerCase().includes(this.state.search.toLowerCase()) //||
-    //   // elem.projects[0].technologies.map().toLowerCase().includes(this.state.search.toLowerCase()) //||
-    //   // elem.projects.toLowerCase().includes(this.state.search.toLowerCase())
-    // }
-    //   )})
   }
-  // SOF
-  // const devReact = devs.filter(obj => obj.tech.includes("React"))
-  // .map(obj => ({"name":obj.name, "tech":obj.tech}));
-
-  // result = array.filter(a => a.users.some(u => u.tags.some(t => t.tag.includes(tag))));
-
-  // const devReact = devs.reduce((acc, ele) =>  ele.tech.includes("React") ? acc.concat({"name": ele.name, "tech":ele.tech}): acc ,[]);
   
   searchChange(e){
     let options = {
       tokenize: true,
       matchAllTokens: true,
       findAllMatches: true,
-      threshold: 0,
+      threshold: 0, // 0 for exact match
       location: 0,
       distance: 0,
       maxPatternLength: 32,
@@ -101,9 +78,9 @@ class Home extends Component {
     };
     let fuse = new Fuse(this.state.studentsInfo, options)
 
-    this.setState({ search: e.target.value,
-      typed: e.target.value === '' ? false : true,
-      filteredBySearch : fuse.search(this.state.search)
+    this.setState({ search: e.target.value, // update search value while user typing
+      typed: e.target.value === '' ? false : true,  // if input is empty show initial student list otherwise sho filtered list
+      filteredBySearch : fuse.search(this.state.search) // update filtered list
     });
     console.log(e.target.value);
   }
