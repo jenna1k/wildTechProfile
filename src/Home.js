@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
 import SearchBar from './Component/Header/SearchBar';
 import Fuse from 'fuse.js';
+import './Home.css';
+import Header from './Component/Header/Header';
 
 class Home extends Component {
   constructor(props) {
@@ -88,9 +90,18 @@ class Home extends Component {
   render() {
     const typed = this.state.typed;
     return (
-      <div>
+      <div className="home">
+        <Header
+          search={this.state.search}
+          searchClick={this.searchClick}
+          searchChange={this.searchChange}
+        />
         <h1>Discover the profiles of our Fullstack Junior Developers</h1>
-        <SearchBar search={this.state.search} searchClick={this.searchClick} searchChange={this.searchChange}/>
+        {/* <SearchBar
+          search={this.state.search}
+          searchClick={this.searchClick}
+          searchChange={this.searchChange}
+        /> */}
         <h2>
           {typed ?
             this.state.filteredBySearch.map(filteredStudent => (
