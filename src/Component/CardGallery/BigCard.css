@@ -1,17 +1,64 @@
 .avatar.card-img {
-  border-radius: 51px 51px 51px 51px;
+  /*border-radius: 51px 51px 51px 51px;
   -moz-border-radius: 51px 51px 51px 51px;
   -webkit-border-radius: 51px 51px 51px 51px;
   border: 1px solid #d1cece;
   -webkit-box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
-  box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);*/
   width: auto;
   height: auto;
   object-fit: contain;
 }
 
+.card--expand {
+  border-radius: 2rem;
+  -moz-border-radius: 2rem;;
+  -webkit-border-radius: 2rem;
+  border: 1px solid #d1cece;
+  -webkit-box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
+  padding: 2rem;
+
+}
+
+.card-title--expand {
+text-align: center;
+color: rgb(255, 251, 251);
+background: greenyellow;
+
+}
+.card-container  {
+  background-color: aquamarine
+}
+
+.card-social__icons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: -2.2rem;
+  margin-top: 9rem;
+
+}
+.avatar {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+
+
+}
+.card-body-wrapper {
+  margin: 0 auto;
+
+}
+.card-text{
+  font-size: 0.90rem;
+  text-align: center
+}
+
+
 .card-img {
   /* width: 100%; */
-  /* border-radius: calc(.25rem - 1px); */
+  border-radius: calc(.6rem - 1px);
 }
+
+
