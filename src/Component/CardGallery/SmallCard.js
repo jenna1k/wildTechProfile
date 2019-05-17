@@ -1,33 +1,28 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
-import { Col, Row, Container } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import ReactDOM from 'react-dom';
+import { SocialIcon } from 'react-social-icons';
+import MdMoreHoriz from 'react-icons/lib/md/more-horiz';
+import './SmallCard.css';
 
-const SmallCard = props => {
+const SmallCard = (props) => {
   return (
-    <Col xs="12" md="12" lg="12">
-      <Card style={{ width: '80%', height: '40%' }}>
-        <CardImg
-          top
-          style={{ width: '70%', position: 'relative' }}
-          src={props.basics.picture}
-          alt={props.basics.name}
-        />
+    <div>
+      <Card className="avatar-card">
+        <CardImg className="avatar-card-img" src={props.basics.picture} alt={props.basics.name}/>
         <CardBody>
-          <CardTitle style={{ color: 'black', textalign: 'justify', textsize: '5%' }}>
-            <em>{props.basics.name}</em>
-          </CardTitle>
-          <CardSubtitle style={{ color: 'black', textalign: 'justify', textsize: '5%' }}>
-            {props.favorite_programming_languages}
-          </CardSubtitle>
-          <Button target="_blank" href={props.basics.email}>
-            Contact
-          </Button>
-          <Button target="_blank" onClick={props.handleClick}>
-            Further
-          </Button>
+          <CardTitle className="avatar-title" ><em>{props.basics.name}</em></CardTitle>
+          <CardSubtitle className="avatar-subtitle">{props.favorite_programming_languages}</CardSubtitle>
+          <div>
+            {props.basics.profiles.map(profile => (
+              <SocialIcon className="avatar-social-icon" url={profile.url} />
+            ))}
+            <MdMoreHoriz className="avatar-more-icon"target="_blank" onClick={props.handleClick} size={20} />
+          </div>
+
         </CardBody>
       </Card>
-    </Col>
+    </div>
   );
 };
 
