@@ -98,6 +98,7 @@ class Home extends Component {
           searchChange={this.searchChange}
         />
         <h1 className="home">Discover the profiles of our Fullstack Junior Developers</h1>
+        import /..BigCard.css
         <CardDeck>
           {typed ?
             this.state.filteredBySearch.map(filteredStudent => (
