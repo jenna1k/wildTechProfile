@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
-import Fuse from 'fuse.js';
-import SmallCard from './Component/CardGallery/SmallCard';
-import './Home.css';
-import Header from './Component/Header/Header';
-import CardDeck from './Component/CardGallery/CardDeck'
-import Footer from './Component/Footer/Footer'
+import React, { Component } from "react";
+import Fuse from "fuse.js";
+import SmallCard from "./Component/CardGallery/SmallCard";
+import "./Home.css";
+import Header from "./Component/Header/Header";
+import CardDeck from "./Component/CardGallery/CardDeck";
+import Footer from "./Component/Footer/Footer";
+import BigCard from "../src/Component/CardGallery/BigCard";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       studentsInfo: [], // initial fetched student list
-      search: '', // will be updated when user type according to searchChange()
+      search: "", // will be updated when user type according to searchChange()
       filteredBySearch: [], // will be updated by searchChange() & searchClick()
-      typed: false  // to display filteredBySearch after fetching api
+      typed: false // to display filteredBySearch after fetching api
     };
 
     this.searchClick = this.searchClick.bind(this);
@@ -21,24 +22,26 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log('[Home] ComponientDidMount');
-    fetch('https://api-resume.herokuapp.com/api/v1/resume')
+    console.log("[Home] ComponientDidMount");
+    fetch("https://api-resume.herokuapp.com/api/v1/resume")
       .then(response => response.json())
       .then(data =>
         this.setState({
           studentsInfo: data
         })
       )
-      .catch(() => alert('error api'));
-      // test for getting unique value
-      console.log('studentsInfo : ', this.state.studentsInfo.map(elem => elem))
-      const uniqueCountry = [...new Set(this.state.studentsInfo.map(item => item.basics.location.country))];
-      console.log('unique country : ', uniqueCountry)
+      .catch(() => alert("error api"));
+    // test for getting unique value
+    console.log("studentsInfo : ", this.state.studentsInfo.map(elem => elem));
+    const uniqueCountry = [
+      ...new Set(this.state.studentsInfo.map(item => item.basics.location.country))
+    ];
+    console.log("unique country : ", uniqueCountry);
   }
 
-  searchClick(e){
-    console.log('input is : ',this.state.search);
-    
+  searchClick(e) {
+    console.log("input is : ", this.state.search);
+
     // fuse.js library setting
     let options = {
       tokenize: true,
@@ -49,22 +52,35 @@ class Home extends Component {
       distance: 0,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ['basics.name', 'basics.email', 'basics.website', 'basics.summary', 'basics.location.country',
-      'basics.profiles.network', 'basics.profiles.username', 'basics.profiles.url',
-      'projects.title', 'projects.date', 'projects.summary', 'projects.technologies',
-      'favorite_programming_languages', 'interests.name', 'interests.keywords'],
+      keys: [
+        "basics.name",
+        "basics.email",
+        "basics.website",
+        "basics.summary",
+        "basics.location.country",
+        "basics.profiles.network",
+        "basics.profiles.username",
+        "basics.profiles.url",
+        "projects.title",
+        "projects.date",
+        "projects.summary",
+        "projects.technologies",
+        "favorite_programming_languages",
+        "interests.name",
+        "interests.keywords"
+      ]
     };
-    let fuse = new Fuse(this.state.studentsInfo, options)    
+    let fuse = new Fuse(this.state.studentsInfo, options);
     console.log(fuse.search(this.state.search));
 
-    this.setState({ filteredBySearch : fuse.search(this.state.search) // update filtered list
-    })
+    this.setState({
+      filteredBySearch: fuse.search(this.state.search) // update filtered list
+    });
 
-    console.log(this.state.filteredBySearch)
-
+    console.log(this.state.filteredBySearch);
   }
-  
-  searchChange(e){
+
+  searchChange(e) {
     let options = {
       tokenize: true,
       matchAllTokens: true,
@@ -74,16 +90,30 @@ class Home extends Component {
       distance: 0,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ['basics.name', 'basics.email', 'basics.website', 'basics.summary', 'basics.location.country',
-      'basics.profiles.network', 'basics.profiles.username', 'basics.profiles.url',
-      'projects.title', 'projects.date', 'projects.summary', 'projects.technologies',
-      'favorite_programming_languages', 'interests.name', 'interests.keywords'],
+      keys: [
+        "basics.name",
+        "basics.email",
+        "basics.website",
+        "basics.summary",
+        "basics.location.country",
+        "basics.profiles.network",
+        "basics.profiles.username",
+        "basics.profiles.url",
+        "projects.title",
+        "projects.date",
+        "projects.summary",
+        "projects.technologies",
+        "favorite_programming_languages",
+        "interests.name",
+        "interests.keywords"
+      ]
     };
-    let fuse = new Fuse(this.state.studentsInfo, options)
+    let fuse = new Fuse(this.state.studentsInfo, options);
 
-    this.setState({ search: e.target.value, // update search value while user typing
-      typed: e.target.value === '' ? false : true,  // if input is empty show initial student list otherwise sho filtered list
-      filteredBySearch : fuse.search(this.state.search) // update filtered list
+    this.setState({
+      search: e.target.value, // update search value while user typing
+      typed: e.target.value === "" ? false : true, // if input is empty show initial student list otherwise sho filtered list
+      filteredBySearch: fuse.search(this.state.search) // update filtered list
     });
     console.log(e.target.value);
   }
@@ -98,13 +128,11 @@ class Home extends Component {
           searchChange={this.searchChange}
         />
         <h1 className="home">Discover the profiles of our Fullstack Junior Developers</h1>
+        <SmallCard />
         <CardDeck>
-          {typed ?
-            this.state.filteredBySearch.map(filteredStudent => (
-            <SmallCard {...filteredStudent} />))
-        : this.state.studentsInfo.map(studentInfo => (
-          <SmallCard {...studentInfo} />))
-        }
+          {typed
+            ? this.state.filteredBySearch.map(filteredStudent => <SmallCard {...filteredStudent} />)
+            : this.state.studentsInfo.map(studentInfo => <SmallCard {...studentInfo} />)}
         </CardDeck>
         <Footer />
       </div>
