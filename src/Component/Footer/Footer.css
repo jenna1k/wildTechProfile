@@ -1,0 +1,31 @@
+footer {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  transition: 200ms;
+  color: aliceblue;
+  font-weight: bold;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+footer:hover {
+  box-shadow: 0 0 2rem gray;
+}
+
+footer a,
+footer a:hover {
+  color: #cae91b;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+footer:hover {
+  box-shadow: 0 0 2rem gray;
+}
+
+footer {
+  background: rgb(44, 40, 44);
+}

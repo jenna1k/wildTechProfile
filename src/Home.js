@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import BigCard from './Component/CardGallery/BigCard';
-// import SearchBar from './Component/Header/SearchBar';
 import Fuse from 'fuse.js';
 import SmallCard from './Component/CardGallery/SmallCard';
 import './Home.css';
 import Header from './Component/Header/Header';
+import CardDeck from './Component/CardGallery/CardDeck'
+import Footer from './Component/Footer/Footer'
 
 class Home extends Component {
   constructor(props) {
@@ -91,31 +91,22 @@ class Home extends Component {
   render() {
     const typed = this.state.typed;
     return (
-      <div className="home">
+      <div>
         <Header
           search={this.state.search}
           searchClick={this.searchClick}
           searchChange={this.searchChange}
         />
-        <h1>Discover the profiles of our Fullstack Junior Developers</h1>
-        {/* <SearchBar
-          search={this.state.search}
-          searchClick={this.searchClick}
-          searchChange={this.searchChange}
-        /> */}
-        <h2>
+        <h1 className="home">Discover the profiles of our Fullstack Junior Developers</h1>
+        <CardDeck>
           {typed ?
             this.state.filteredBySearch.map(filteredStudent => (
-            <BigCard {...filteredStudent} />))
+            <SmallCard {...filteredStudent} />))
         : this.state.studentsInfo.map(studentInfo => (
-          <BigCard {...studentInfo} />))
+          <SmallCard {...studentInfo} />))
         }
-        </h2>
-        <h3>
-          {this.state.studentsInfo.map(studentInfo => (
-            <SmallCard {...studentInfo} />
-          ))}
-        </h3>
+        </CardDeck>
+        <Footer />
       </div>
     );
   }
