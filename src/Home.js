@@ -33,11 +33,8 @@ class Home extends Component {
     console.log('input is : ',this.state.search);
     this.setState({ filteredBySearch: this.state.studentsInfo
       .filter(elem => elem.basics.name.toLowerCase().includes(this.state.search.toLowerCase()))})
-    const filteredBySearch = this.state.studentsInfo
-    .filter(elem => elem.basics.name.toLowerCase().includes(this.state.search.toLowerCase()))
     // .map(student => ({"name": student.basics.name}));
     // .reduce((acc, ele) => )
-    filteredBySearch.map(i=>console.log(i));
   }
   // SOF
   // const devReact = devs.filter(obj => obj.tech.includes("React"))
@@ -54,13 +51,10 @@ class Home extends Component {
 
   render() {
     const typed = this.state.typed;
-    const filteredBySearch = this.state.studentsInfo
-    .filter(elem => elem.basics.name.toLowerCase().includes(this.state.search.toLowerCase()));
     return (
       <div>
         <h1>Discover the profiles of our Fullstack Junior Developers</h1>
         <SearchBar search={this.state.search} searchClick={this.searchClick} searchChange={this.searchChange}/>
-        {/* <BigCard {fetched ? {...filteredBySearch} : {...studentInfo}} /> */}
         <h2>
           {typed ? 
             this.state.filteredBySearch.map(filteredStudent => (
@@ -69,15 +63,6 @@ class Home extends Component {
           <BigCard {...studentInfo} />))
         }
         </h2>
-                {/* <h2>
-          {typed ? 
-          this.state.studentsInfo.map(studentInfo => (
-            <BigCard {...studentInfo} />))
-          :
-            this.state.filteredBySearch.map(filteredStudent => (
-            <BigCard {...filteredStudent} />))
-        }
-        </h2> */}
       </div>
     );
   }
