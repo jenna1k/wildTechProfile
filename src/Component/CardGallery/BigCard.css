@@ -1,0 +1,17 @@
+.avatar.card-img {
+  border-radius: 51px 51px 51px 51px;
+  -moz-border-radius: 51px 51px 51px 51px;
+  -webkit-border-radius: 51px 51px 51px 51px;
+  border: 1px solid #d1cece;
+  -webkit-box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 11px 10px 21px -5px rgba(0, 0, 0, 0.75);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.card-img {
+  /* width: 100%; */
+  /* border-radius: calc(.25rem - 1px); */
+}
