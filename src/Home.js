@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import Fuse from "fuse.js";
 import SmallCard from "./Component/CardGallery/SmallCard";
@@ -6,6 +7,16 @@ import Header from "./Component/Header/Header";
 import CardDeck from "./Component/CardGallery/CardDeck";
 import Footer from "./Component/Footer/Footer";
 import BigCard from "../src/Component/CardGallery/BigCard";
+=======
+import React, { Component } from 'react';
+import Fuse from 'fuse.js';
+import SmallCard from './Component/CardGallery/SmallCard';
+import './Home.css';
+import Header from './Component/Header/Header';
+import CardDeck from './Component/CardGallery/CardDeck';
+import Footer from './Component/Footer/Footer';
+import { Col, Row, Container } from 'reactstrap';
+>>>>>>> d0d52a3ec7e3131e19a48d9bcde722c97bb8409a
 
 class Home extends Component {
   constructor(props) {
@@ -30,6 +41,7 @@ class Home extends Component {
           studentsInfo: data
         })
       )
+<<<<<<< HEAD
       .catch(() => alert("error api"));
     // test for getting unique value
     console.log("studentsInfo : ", this.state.studentsInfo.map(elem => elem));
@@ -41,6 +53,19 @@ class Home extends Component {
 
   searchClick(e) {
     console.log("input is : ", this.state.search);
+=======
+      .catch(() => alert('error api'));
+    // test for getting unique value
+    console.log('studentsInfo : ', this.state.studentsInfo.map(elem => elem));
+    const uniqueCountry = [
+      ...new Set(this.state.studentsInfo.map(item => item.basics.location.country))
+    ];
+    console.log('unique country : ', uniqueCountry);
+  }
+
+  searchClick(e) {
+    console.log('input is : ', this.state.search);
+>>>>>>> d0d52a3ec7e3131e19a48d9bcde722c97bb8409a
 
     // fuse.js library setting
     let options = {
@@ -53,6 +78,7 @@ class Home extends Component {
       maxPatternLength: 32,
       minMatchCharLength: 1,
       keys: [
+<<<<<<< HEAD
         "basics.name",
         "basics.email",
         "basics.website",
@@ -68,6 +94,23 @@ class Home extends Component {
         "favorite_programming_languages",
         "interests.name",
         "interests.keywords"
+=======
+        'basics.name',
+        'basics.email',
+        'basics.website',
+        'basics.summary',
+        'basics.location.country',
+        'basics.profiles.network',
+        'basics.profiles.username',
+        'basics.profiles.url',
+        'projects.title',
+        'projects.date',
+        'projects.summary',
+        'projects.technologies',
+        'favorite_programming_languages',
+        'interests.name',
+        'interests.keywords'
+>>>>>>> d0d52a3ec7e3131e19a48d9bcde722c97bb8409a
       ]
     };
     let fuse = new Fuse(this.state.studentsInfo, options);
@@ -91,6 +134,7 @@ class Home extends Component {
       maxPatternLength: 32,
       minMatchCharLength: 1,
       keys: [
+<<<<<<< HEAD
         "basics.name",
         "basics.email",
         "basics.website",
@@ -106,13 +150,34 @@ class Home extends Component {
         "favorite_programming_languages",
         "interests.name",
         "interests.keywords"
+=======
+        'basics.name',
+        'basics.email',
+        'basics.website',
+        'basics.summary',
+        'basics.location.country',
+        'basics.profiles.network',
+        'basics.profiles.username',
+        'basics.profiles.url',
+        'projects.title',
+        'projects.date',
+        'projects.summary',
+        'projects.technologies',
+        'favorite_programming_languages',
+        'interests.name',
+        'interests.keywords'
+>>>>>>> d0d52a3ec7e3131e19a48d9bcde722c97bb8409a
       ]
     };
     let fuse = new Fuse(this.state.studentsInfo, options);
 
     this.setState({
       search: e.target.value, // update search value while user typing
+<<<<<<< HEAD
       typed: e.target.value === "" ? false : true, // if input is empty show initial student list otherwise sho filtered list
+=======
+      typed: e.target.value === '' ? false : true, // if input is empty show initial student list otherwise sho filtered list
+>>>>>>> d0d52a3ec7e3131e19a48d9bcde722c97bb8409a
       filteredBySearch: fuse.search(this.state.search) // update filtered list
     });
     console.log(e.target.value);
@@ -128,12 +193,28 @@ class Home extends Component {
           searchChange={this.searchChange}
         />
         <h1 className="home">Discover the profiles of our Fullstack Junior Developers</h1>
+<<<<<<< HEAD
         <SmallCard />
         <CardDeck>
           {typed
             ? this.state.filteredBySearch.map(filteredStudent => <SmallCard {...filteredStudent} />)
             : this.state.studentsInfo.map(studentInfo => <SmallCard {...studentInfo} />)}
         </CardDeck>
+=======
+        <section>
+          {typed
+            ? this.state.filteredBySearch.map(filteredStudent => (
+                <Row>
+                  <SmallCard {...filteredStudent} />
+                </Row>
+              ))
+            : this.state.studentsInfo.map(studentInfo => (
+                <Row>
+                  <SmallCard {...studentInfo} />
+                </Row>
+              ))}
+        </section>
+>>>>>>> d0d52a3ec7e3131e19a48d9bcde722c97bb8409a
         <Footer />
       </div>
     );
