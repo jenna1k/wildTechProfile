@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
-import SearchBar from './Component/Header/SearchBar';
+// import SearchBar from './Component/Header/SearchBar';
 import Fuse from 'fuse.js';
+import SmallCard from './Component/CardGallery/SmallCard';
 import './Home.css';
 import Header from './Component/Header/Header';
 
@@ -110,6 +111,11 @@ class Home extends Component {
           <BigCard {...studentInfo} />))
         }
         </h2>
+        <h3>
+          {this.state.studentsInfo.map(studentInfo => (
+            <SmallCard {...studentInfo} />
+          ))}
+        </h3>
       </div>
     );
   }
