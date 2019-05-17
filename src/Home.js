@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
+import './Home.css';
 
 class Home extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="home">
         <h1>Discover the profiles of our Fullstack Junior Developers</h1>
         <h2>
           {this.state.studentsInfo.map(studentInfo => (

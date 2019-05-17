@@ -6,7 +6,7 @@ import Header from './Component/Header/Header';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header />
       <Home />
       <CardDeck />
