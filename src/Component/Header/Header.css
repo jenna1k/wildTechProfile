@@ -1,0 +1,22 @@
+.wcs-header {
+  background-color: white;
+  border-bottom: rgb(238, 137, 137) solid 3px;
+  box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.wcs-header-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wcs-header-img {
+  height: 30px;
+  margin: 10px;
+}
+
+.wcs-header-searchfilter {
+  display: flex;
+  justify-content: center;
+}
