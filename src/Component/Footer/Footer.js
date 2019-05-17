@@ -4,9 +4,9 @@ import "./Footer.css";
 const Footer = () => (
   <footer className="footer">
     <span>
-      Made with <i class="fas fa-heart" /> & <i class="fas fa-coffee" />   by{" "}
+      Made with <i class="fas fa-heart" /> & <i class="fas fa-coffee" /> by{" "}
       <a
-        href="https://odyssey.wildcodeschool.com/?locale=en"
+        href="https://github.com/jenna1k/wildTechProfile"
         target="_blank"
         class="link color-inherit hover-white"
       >
@@ -18,5 +18,3 @@ const Footer = () => (
 );
 
 export default Footer;
-  
-
