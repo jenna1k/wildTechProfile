@@ -31,7 +31,11 @@ class Header extends Component {
                   className="wcs-header-img"
                 />
                 <NavItem className="m-2">
-                  <SearchBar />
+                  <SearchBar
+                    search={this.props.search}
+                    searchClick={this.props.searchClick}
+                    searchChange={this.props.searchChange}
+                  />
                 </NavItem>
               </div>
               <div className="wcs-header-searchfilter">

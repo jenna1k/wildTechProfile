@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
 import './Home.css';
-import SearchBar from './Component/Header/SearchBar';
+//import SearchBar from './Component/Header/SearchBar';
+import Header from './Component/Header/Header';
 
 class Home extends Component {
   constructor(props) {
@@ -51,12 +52,17 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <h1>Discover the profiles of our Fullstack Junior Developers</h1>
-        <SearchBar
+        <Header
           search={this.state.search}
           searchClick={this.searchClick}
           searchChange={this.searchChange}
         />
+        <h1>Discover the profiles of our Fullstack Junior Developers</h1>
+        {/* <SearchBar
+          search={this.state.search}
+          searchClick={this.searchClick}
+          searchChange={this.searchChange}
+        /> */}
         <h2>
           {this.state.studentsInfo.map(studentInfo => (
             // {...filteredBySearch}
