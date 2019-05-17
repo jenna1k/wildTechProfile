@@ -16,7 +16,7 @@ const SmallCard = (props) => {
             {props.basics.profiles.map(profile => (
               <SocialIcon url={profile.url} />
             ))}
-            <MdMoreHoriz target="_blank" onClick={props.handleClick} color="#cccccc" size={20} />
+            <MdMoreHoriz target="_blank" onClick={props.handleClick} size={20} />
           </div>
 
         </CardBody>
