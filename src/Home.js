@@ -42,8 +42,8 @@ class Home extends Component {
       elem.basics.profiles[1].username.toLowerCase().includes(this.state.search.toLowerCase()) ||
       elem.basics.profiles[1].url.toLowerCase().includes(this.state.search.toLowerCase()) ||
       elem.projects[0].title.toLowerCase().includes(this.state.search.toLowerCase()) ||
-      elem.projects[0].summary.toLowerCase().includes(this.state.search.toLowerCase()) //||
-      // elem.projects[0].technologies.map(tech=>tech.toLowerCase().includes(this.state.search.toLowerCase()) //||
+      elem.projects[0].summary.toLowerCase().includes(this.state.search.toLowerCase()) ||
+      elem.projects[0].technologies.map().toLowerCase().includes(this.state.search.toLowerCase()) //||
       // elem.projects.toLowerCase().includes(this.state.search.toLowerCase())
     }
       )})
