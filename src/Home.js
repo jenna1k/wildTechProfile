@@ -1,6 +1,5 @@
 import React from 'react';
 import BigCard from './Component/CardGallery/BigCard';
-import MultiOptionsFilter from './Component/Filter/MultiOptionsFilter';
 import FilterLocation from './Component/Filter/FilterLocation';
 
 export default class Home extends React.Component {
@@ -12,10 +11,8 @@ export default class Home extends React.Component {
     this.state = {
       displayedResults: [],
       studentsInfo: [],
-      location: 'any',
-      filteredByLocation: [],
-
-
+      location: 'Germany',
+      filteredByLocation: []
     };
   }
 
@@ -48,7 +45,6 @@ export default class Home extends React.Component {
     return (
       <div>
         <div>
-          <MultiOptionsFilter options={this.state.displayedResults} />
           <FilterLocation filterByLocation={this.filterByLocation} />
         </div>
         <h2>

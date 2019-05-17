@@ -6,7 +6,6 @@
     "bootstrap": "^4.3.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-multiselect-checkboxes": "^0.1.1",
     "react-scripts": "3.0.1",
     "reactstrap": "^8.0.0"
   },
