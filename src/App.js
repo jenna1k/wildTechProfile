@@ -7,9 +7,7 @@ import Footer from './Component/Footer/Footer';
 function App() {
   return (
     <div>
-      <Home />
-      <CardDeck/>
-      <Footer/>
+      <Home/>
     </div>
   );
 }
