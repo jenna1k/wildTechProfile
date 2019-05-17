@@ -7,9 +7,9 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      studentsInfo: [],
-      search: '',
-      filteredBySearch: [],
+      studentsInfo: [], // initial fetched student list
+      search: '', // will be updated when user type according to searchChange()
+      filteredBySearch: [], // will be updated by searchChange() & searchClick()
       typed: false
     };
 
@@ -52,7 +52,8 @@ class Home extends Component {
     let fuse = new Fuse(this.state.studentsInfo, options)    
     console.log(fuse.search(this.state.search));
 
-    this.setState({ filteredBySearch : fuse.search(this.state.search)})
+    this.setState({ filteredBySearch : fuse.search(this.state.search)
+    })
 
     console.log(this.state.filteredBySearch)
 
@@ -99,7 +100,7 @@ class Home extends Component {
     let fuse = new Fuse(this.state.studentsInfo, options)
 
     this.setState({ search: e.target.value,
-      typed: e.target.value == '' ? false : true,
+      typed: e.target.value === '' ? false : true,
       filteredBySearch : fuse.search(this.state.search)
     });
     console.log(e.target.value);
