@@ -10,7 +10,7 @@ class Home extends Component {
       studentsInfo: [], // initial fetched student list
       search: '', // will be updated when user type according to searchChange()
       filteredBySearch: [], // will be updated by searchChange() & searchClick()
-      typed: false
+      typed: false  // to display filteredBySearch after fetching api
     };
 
     this.searchClick = this.searchClick.bind(this);
@@ -27,6 +27,7 @@ class Home extends Component {
         })
       )
       .catch(() => alert('error api'));
+      // test for getting unique value
       console.log('studentsInfo : ', this.state.studentsInfo.map(elem => elem))
       const uniqueCountry = [...new Set(this.state.studentsInfo.map(item => item.basics.location.country))];
       console.log('unique country : ', uniqueCountry)
@@ -34,7 +35,8 @@ class Home extends Component {
 
   searchClick(e){
     console.log('input is : ',this.state.search);
-
+    
+    // fuse.js library setting
     let options = {
       tokenize: true,
       matchAllTokens: true,
@@ -113,7 +115,7 @@ class Home extends Component {
         <h1>Discover the profiles of our Fullstack Junior Developers</h1>
         <SearchBar search={this.state.search} searchClick={this.searchClick} searchChange={this.searchChange}/>
         <h2>
-          {typed ? 
+          {typed ?
             this.state.filteredBySearch.map(filteredStudent => (
             <BigCard {...filteredStudent} />))
         : this.state.studentsInfo.map(studentInfo => (
