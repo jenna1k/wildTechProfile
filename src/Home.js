@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
+import SmallCard from './Component/CardGallery/SmallCard';
 import './Home.css';
 //import SearchBar from './Component/Header/SearchBar';
 import Header from './Component/Header/Header';
@@ -69,6 +70,11 @@ class Home extends Component {
             <BigCard {...studentInfo} />
           ))}
         </h2>
+        <h3>
+          {this.state.studentsInfo.map(studentInfo => (
+            <SmallCard {...studentInfo} />
+          ))}
+        </h3>
       </div>
     );
   }
