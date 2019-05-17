@@ -93,11 +93,14 @@ class Home extends Component {
       keys: ['basics.location.country'],
     };
     const locationFuse = new Fuse(this.state.studentsInfo, locationOptions)
+    console.log('locationFuse', locationFuse)
     return (
       <div>
         <h1>Discover the profiles of our Fullstack Junior Developers</h1>
         <SearchBar search={this.state.search} searchClick={this.searchClick} searchChange={this.searchChange}/>
-        <DropdownTreeSelect data={locationFuse} onChange={this.searchChange} placeholderText="Location"/>
+        {/* <DropdownTreeSelect data={this.state.filteredBySearch} onChange={this.searchChange} placeholderText="Location"/> */}
+        {this.state.filteredBySearch.map(filteredStudent=>(<DropdownTreeSelect data={filteredStudent} onChange={this.searchChange} placeholderText="Location"/>))}
+
         <h2>
           {typed ?
             this.state.filteredBySearch.map(filteredStudent => (
