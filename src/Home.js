@@ -1,32 +1,58 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BigCard from './Component/CardGallery/BigCard';
+import MultiOptionsFilter from './Component/Filter/MultiOptionsFilter';
+import FilterLocation from './Component/Filter/FilterLocation';
 
-class Home extends Component {
+export default class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    this.filterByLocation = this.filterByLocation.bind(this);
+
     this.state = {
-      studentsInfo: []
+      displayedResults: [],
+      studentsInfo: [],
+      location: 'any',
+      filteredByLocation: [],
+
+
     };
   }
 
   componentDidMount() {
-    console.log('[Home] ComponientDidMount');
     fetch('https://api-resume.herokuapp.com/api/v1/resume')
       .then(response => response.json())
       .then(data =>
         this.setState({
-          studentsInfo: data
+          studentsInfo: data,
+          displayedResults: data
         })
       )
       .catch(() => alert('error api'));
   }
 
+  filterByLocation(location) {
+    this.setState({
+      location: location
+    });
+
+    const filtered = this.state.studentsInfo.filter(studentInfo =>
+      studentInfo.basics.location.country === this.state.location);
+    this.setState({
+      // need to understand why it doesn't work
+      displayedResults: location.toLowerCase() === 'any' ? this.state.studentsInfo : filtered
+    })
+  }
+
   render() {
     return (
       <div>
-        <h1>Discover the profiles of our Fullstack Junior Developers</h1>
+        <div>
+          <MultiOptionsFilter options={this.state.displayedResults} />
+          <FilterLocation filterByLocation={this.filterByLocation} />
+        </div>
         <h2>
-          {this.state.studentsInfo.map(studentInfo => (
+          {this.state.displayedResults.map(studentInfo => (
             <BigCard {...studentInfo} />
           ))}
         </h2>
@@ -34,5 +60,3 @@ class Home extends Component {
     );
   }
 }
-
-export default Home;
