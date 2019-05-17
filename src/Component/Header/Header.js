@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css';
 import SearchBar from './SearchBar';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  Nav,
-  NavItem,
-  Button,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Input
-} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem, Button } from 'reactstrap';
 
 class Header extends Component {
   constructor(props) {
@@ -42,12 +31,7 @@ class Header extends Component {
                   className="wcs-header-img"
                 />
                 <NavItem className="m-2">
-                  <InputGroup>
-                    <Input />
-                    <InputGroupAddon addonType="append">
-                      <InputGroupText>Search</InputGroupText>
-                    </InputGroupAddon>
-                  </InputGroup>
+                  <SearchBar />
                 </NavItem>
               </div>
               <div className="wcs-header-searchfilter">

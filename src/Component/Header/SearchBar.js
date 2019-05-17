@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, InputGroupAddon, InputGroupText, InputGroup } from 'reactstrap';
 
-const SearchBar = ({ search, searchClick, searchChange }) => {
+const SearchBar = ({ searchClick, searchChange }) => {
   return (
     <div>
       {/* <Input type="search" placeholder="search" onChange={searchChange}/>
