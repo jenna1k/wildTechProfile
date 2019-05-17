@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
 import SearchBar from './Component/Header/SearchBar';
 import Fuse from 'fuse.js';
-import DropdownTreeSelect from 'react-dropdown-tree-select'
-import 'react-dropdown-tree-select/dist/styles.css'
+import SmallCard from './Component/CardGallery/SmallCard';
+import './Home.css';
+//import SearchBar from './Component/Header/SearchBar';
+import Header from './Component/Header/Header';
 
 class Home extends Component {
   constructor(props) {
@@ -95,12 +97,15 @@ class Home extends Component {
     const locationFuse = new Fuse(this.state.studentsInfo, locationOptions)
     console.log('locationFuse', locationFuse)
     return (
-      <div>
+      <div className="home">
+        <Header
+          search={this.state.search}
+          searchClick={this.searchClick}
+          searchChange={this.searchChange}
+        />
         <h1>Discover the profiles of our Fullstack Junior Developers</h1>
-        <SearchBar search={this.state.search} searchClick={this.searchClick} searchChange={this.searchChange}/>
-        {/* <DropdownTreeSelect data={this.state.filteredBySearch} onChange={this.searchChange} placeholderText="Location"/> */}
-        {this.state.filteredBySearch.map(filteredStudent=>(<DropdownTreeSelect data={filteredStudent} onChange={this.searchChange} placeholderText="Location"/>))}
-
+        
+        {/* {this.state.filteredBySearch.map(filteredStudent=>(<DropdownTreeSelect data={filteredStudent} onChange={this.searchChange} placeholderText="Location"/>))} */}
         <h2>
           {typed ?
             this.state.filteredBySearch.map(filteredStudent => (
@@ -109,6 +114,11 @@ class Home extends Component {
           <BigCard {...studentInfo} />))
         }
         </h2>
+        <h3>
+          {this.state.studentsInfo.map(studentInfo => (
+            <SmallCard {...studentInfo} />
+          ))}
+        </h3>
       </div>
     );
   }

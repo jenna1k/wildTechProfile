@@ -1,37 +1,22 @@
-import React from 'react';
-import {
-  Card,
-  //Button,
-  //CardLink,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle
-  //Container,
-  //Row,
-  //Col
-} from 'reactstrap';
-import { SocialIcon } from 'react-social-icons';
+import React from "react";
+import { Card, CardImg, CardText, CardBody } from "reactstrap";
+import { SocialIcon } from "react-social-icons";
+import "./BigCard.css";
 
 const BigCard = props => {
   return (
     <div>
-      <Card>
-        <CardBody>
-          <CardImg width="50%" src={props.basics.picture} alt="Image {props.basics.name}" />
-        </CardBody>
-        <CardTitle>Name:{props.basics.name}</CardTitle>
-        <CardSubtitle>Email: {props.basics.email}</CardSubtitle>
-        <CardBody>
-          <CardText>Skills: {props.favorite_programming_languages}</CardText>
+      <Card className="card-container">
+        <CardImg className="avatar" src={props.basics.picture} alt={props.basics.name} />
+
+        <CardBody className="card-body-text">
+          <CardText>Name:{props.basics.name}</CardText>
+          <CardText>Email: {props.basics.email}</CardText>
+          <CardText>Skills: </CardText>
           <CardText>Bio: {props.basics.summary}</CardText>
-          <CardText>Interests: {props.interests.name}</CardText>
-          <CardText>
-            Latest Project: Title: {props.projects.title} Technologies:{' '}
-            {props.projects.technologies}
-          </CardText>
-          <div>
+          <CardText>Interests: </CardText>
+          <CardText>Latest Project Title: Technologies:</CardText>
+          <div className="icons">
             {props.basics.profiles.map(profile => (
               <SocialIcon url={profile.url} />
             ))}
