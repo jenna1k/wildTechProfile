@@ -7,6 +7,7 @@
     "fuse.js": "^3.4.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-dropdown-tree-select": "^1.20.1",
     "react-scripts": "3.0.1",
     "reactstrap": "^8.0.0"
   },

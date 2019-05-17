@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import BigCard from './Component/CardGallery/BigCard';
 import SearchBar from './Component/Header/SearchBar';
 import Fuse from 'fuse.js';
+import DropdownTreeSelect from 'react-dropdown-tree-select'
+import 'react-dropdown-tree-select/dist/styles.css'
 
 class Home extends Component {
   constructor(props) {
@@ -87,10 +89,15 @@ class Home extends Component {
 
   render() {
     const typed = this.state.typed;
+    const locationOptions = {
+      keys: ['basics.location.country'],
+    };
+    const locationFuse = new Fuse(this.state.studentsInfo, locationOptions)
     return (
       <div>
         <h1>Discover the profiles of our Fullstack Junior Developers</h1>
         <SearchBar search={this.state.search} searchClick={this.searchClick} searchChange={this.searchChange}/>
+        <DropdownTreeSelect data={locationFuse} onChange={this.searchChange} placeholderText="Location"/>
         <h2>
           {typed ?
             this.state.filteredBySearch.map(filteredStudent => (
