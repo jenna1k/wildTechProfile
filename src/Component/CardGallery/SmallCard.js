@@ -4,13 +4,13 @@ import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } fr
 const SmallCard = (props) => {
   return (
     <div>
-      <Card>
-        <CardImg top width="30%" src={props.basics.picture} alt={props.basics.name}/>
+      <Card style={{width:"10%", height:"40%"}}>
+        <CardImg top style={{width:"70%", position:"relative"}} src={props.basics.picture} alt={props.basics.name}/>
         <CardBody>
-          <CardTitle style={{color: 'black'}} >{props.basics.name}</CardTitle>
-          <CardSubtitle style={{color: 'black'}}>{props.favorite_programming_languages}</CardSubtitle>
-          <Button href={props.basics.email}>Contact</Button>
-          <Button onClick={props.handleClick}> Further </Button>
+          <CardTitle style={{color:'black', textalign:"justify", textsize:"5%"}} ><em>{props.basics.name}</em></CardTitle>
+          <CardSubtitle style={{color:'black', textalign:"justify",textsize:"5%"}}>{props.favorite_programming_languages}</CardSubtitle>
+          <Button target="_blank" href={props.basics.email}>Contact</Button>
+          <Button target="_blank" onClick={props.handleClick}> Further </Button>
         </CardBody>
       </Card>
     </div>
