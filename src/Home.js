@@ -68,7 +68,7 @@ class Home extends Component {
   searchChange(e){
     // debugger
     // console.log(e.target)
-    return
+    // return
     let options = {
       tokenize: true,
       matchAllTokens: true,
