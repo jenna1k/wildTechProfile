@@ -3,7 +3,7 @@ import { Card, CardImg, CardText, CardBody } from "reactstrap";
 import { SocialIcon } from "react-social-icons";
 import "./BigCard.css";
 
-const BigCard = props => {
+const BigCard = (props) => {
   return (
     <div>
       <Card className="card-container card--expand">
