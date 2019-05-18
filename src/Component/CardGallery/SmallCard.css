@@ -1,0 +1,28 @@
+.avatar-card {
+  width:"60%";
+  height:"80%";
+}
+.avatar-card-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50px;
+}
+.avatar-title {
+color: "black";
+text-align: "justify";
+font-size: "5%";
+}
+
+
+.avatar-subtitle{
+color:'black';
+text-align:"justify";
+font-size:"2%";
+}
+/* .avatar-social-icon {
+
+}
+.avatar-more-icon {
+
+} */

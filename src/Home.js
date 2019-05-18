@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import BigCard from './Component/CardGallery/BigCard';
-import SearchBar from './Component/Header/SearchBar';
 import Fuse from 'fuse.js';
 import SmallCard from './Component/CardGallery/SmallCard';
 import './Home.css';
-//import SearchBar from './Component/Header/SearchBar';
 import Header from './Component/Header/Header';
+import CardDeck from './Component/CardGallery/CardDeck';
+import Footer from './Component/Footer/Footer';
+import { Col, Row, Container } from 'reactstrap';
 
 class Home extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Home extends Component {
       studentsInfo: [], // initial fetched student list
       search: '', // will be updated when user type according to searchChange()
       filteredBySearch: [], // will be updated by searchChange() & searchClick()
-      typed: false  // to display filteredBySearch after fetching api
+      typed: false // to display filteredBySearch after fetching api
     };
 
     this.searchClick = this.searchClick.bind(this);
@@ -31,15 +31,17 @@ class Home extends Component {
         })
       )
       .catch(() => alert('error api'));
-      // test for getting unique value
-      console.log('studentsInfo : ', this.state.studentsInfo.map(elem => elem))
-      const uniqueCountry = [...new Set(this.state.studentsInfo.map(item => item.basics.location.country))];
-      console.log('unique country : ', uniqueCountry)
+    // test for getting unique value
+    console.log('studentsInfo : ', this.state.studentsInfo.map(elem => elem));
+    const uniqueCountry = [
+      ...new Set(this.state.studentsInfo.map(item => item.basics.location.country))
+    ];
+    console.log('unique country : ', uniqueCountry);
   }
 
-  searchClick(e){
-    console.log('input is : ',this.state.search);
-    
+  searchClick(e) {
+    console.log('input is : ', this.state.search);
+
     // fuse.js library setting
     let options = {
       tokenize: true,
@@ -50,19 +52,32 @@ class Home extends Component {
       distance: 0,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ['basics.name', 'basics.email', 'basics.website', 'basics.summary', 'basics.location.country',
-      'basics.profiles.network', 'basics.profiles.username', 'basics.profiles.url',
-      'projects.title', 'projects.date', 'projects.summary', 'projects.technologies',
-      'favorite_programming_languages', 'interests.name', 'interests.keywords'],
+      keys: [
+        'basics.name',
+        'basics.email',
+        'basics.website',
+        'basics.summary',
+        'basics.location.country',
+        'basics.profiles.network',
+        'basics.profiles.username',
+        'basics.profiles.url',
+        'projects.title',
+        'projects.date',
+        'projects.summary',
+        'projects.technologies',
+        'favorite_programming_languages',
+        'interests.name',
+        'interests.keywords'
+      ]
     };
-    let fuse = new Fuse(this.state.studentsInfo, options)    
+    let fuse = new Fuse(this.state.studentsInfo, options);
     console.log(fuse.search(this.state.search));
 
-    this.setState({ filteredBySearch : fuse.search(this.state.search) // update filtered list
-    })
+    this.setState({
+      filteredBySearch: fuse.search(this.state.search) // update filtered list
+    });
 
-    console.log(this.state.filteredBySearch)
-
+    console.log(this.state.filteredBySearch);
   }
   
   searchChange(e){
@@ -78,26 +93,40 @@ class Home extends Component {
       distance: 0,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ['basics.name', 'basics.email', 'basics.website', 'basics.summary', 'basics.location.country',
-      'basics.profiles.network', 'basics.profiles.username', 'basics.profiles.url',
-      'projects.title', 'projects.date', 'projects.summary', 'projects.technologies',
-      'favorite_programming_languages', 'interests.name', 'interests.keywords'],
+      keys: [
+        'basics.name',
+        'basics.email',
+        'basics.website',
+        'basics.summary',
+        'basics.location.country',
+        'basics.profiles.network',
+        'basics.profiles.username',
+        'basics.profiles.url',
+        'projects.title',
+        'projects.date',
+        'projects.summary',
+        'projects.technologies',
+        'favorite_programming_languages',
+        'interests.name',
+        'interests.keywords'
+      ]
     };
-    let fuse = new Fuse(this.state.studentsInfo, options)
+    let fuse = new Fuse(this.state.studentsInfo, options);
 
-    this.setState({ search: e.target.value, // update search value while user typing
-      typed: e.target.value === '' ? false : true,  // if input is empty show initial student list otherwise sho filtered list
-      filteredBySearch : fuse.search(this.state.search) // update filtered list
+    this.setState({
+      search: e.target.value, // update search value while user typing
+      typed: e.target.value === '' ? false : true, // if input is empty show initial student list otherwise sho filtered list
+      filteredBySearch: fuse.search(this.state.search) // update filtered list
     });
     console.log(e.target.value);
 
 
-    let options1  ={
-      keys: ['projects.technologies']
-    };
-    let fuse1 = new Fuse(this.state.studentsInfo, options1)
+    // let options1  ={
+    //   keys: ['projects.technologies']
+    // };
+    // let fuse1 = new Fuse(this.state.studentsInfo, options1)
 
-    console.log("tech",fuse1.search('material ui'))
+    // console.log("tech",fuse1.search('material ui'))
   }
 
   render() {
@@ -108,28 +137,27 @@ class Home extends Component {
     const locationFuse = new Fuse(this.state.studentsInfo, locationOptions)
     console.log('locationFuse', locationFuse)
     return (
-      <div className="home">
+      <div>
         <Header
           search={this.state.search}
           searchClick={this.searchClick}
           searchChange={this.searchChange}
         />
-        <h1>Discover the profiles of our Fullstack Junior Developers</h1>
-        
-        {/* {this.state.filteredBySearch.map(filteredStudent=>(<DropdownTreeSelect data={filteredStudent} onChange={this.searchChange} placeholderText="Location"/>))} */}
-        <h2>
-          {typed ?
-            this.state.filteredBySearch.map(filteredStudent => (
-            <BigCard {...filteredStudent} />))
-        : this.state.studentsInfo.map(studentInfo => (
-          <BigCard {...studentInfo} />))
-        }
-        </h2>
-        <h3>
-          {this.state.studentsInfo.map(studentInfo => (
-            <SmallCard {...studentInfo} />
-          ))}
-        </h3>
+        <h1 className="home">Discover the profiles of our Fullstack Junior Developers</h1>
+        <section>
+          {typed
+            ? this.state.filteredBySearch.map(filteredStudent => (
+                <Row>
+                  <SmallCard {...filteredStudent} />
+                </Row>
+              ))
+            : this.state.studentsInfo.map(studentInfo => (
+                <Row>
+                  <SmallCard {...studentInfo} />
+                </Row>
+              ))}
+        </section>
+        <Footer />
       </div>
     );
   }
