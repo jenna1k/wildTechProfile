@@ -79,8 +79,11 @@ class Home extends Component {
 
     console.log(this.state.filteredBySearch);
   }
-
-  searchChange(e) {
+  
+  searchChange(e){
+    // debugger
+    // console.log(e.target)
+    // return
     let options = {
       tokenize: true,
       matchAllTokens: true,
@@ -116,10 +119,23 @@ class Home extends Component {
       filteredBySearch: fuse.search(this.state.search) // update filtered list
     });
     console.log(e.target.value);
+
+
+    // let options1  ={
+    //   keys: ['projects.technologies']
+    // };
+    // let fuse1 = new Fuse(this.state.studentsInfo, options1)
+
+    // console.log("tech",fuse1.search('material ui'))
   }
 
   render() {
     const typed = this.state.typed;
+    const locationOptions = {
+      keys: ['basics.location.country'],
+    };
+    const locationFuse = new Fuse(this.state.studentsInfo, locationOptions)
+    console.log('locationFuse', locationFuse)
     return (
       <div>
         <Header
