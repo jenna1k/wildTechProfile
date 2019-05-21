@@ -3,7 +3,6 @@ import { Row } from 'reactstrap';
 import SmallCard from './Component/CardGallery/SmallCard';
 import Header from './Component/Header/Header';
 import Footer from './Component/Footer/Footer';
-import FilterLocation from './Component/Filter/FilterLocation';
 import Fuse from 'fuse.js';
 import './Home.css';
 
@@ -21,7 +20,7 @@ export default class Home extends React.Component {
       filteredBySearch: [], // will be updated by searchChange() & searchClick()
       typed: false, // to display filteredBySearch after fetching api
       displayedResults: [],
-      location: 'Germany',
+      location: 'any',
       filteredByLocation: []
     };
   }
@@ -86,6 +85,9 @@ export default class Home extends React.Component {
   }
 
   searchChange(e) {
+    // debugger
+    // console.log(e.target)
+    // return
     let options = {
       tokenize: true,
       matchAllTokens: true,
@@ -122,6 +124,14 @@ export default class Home extends React.Component {
       filteredBySearch: fuse.search(this.state.search) // update filtered list
     });
     console.log(e.target.value);
+
+
+    // let options1  ={
+    //   keys: ['projects.technologies']
+    // };
+    // let fuse1 = new Fuse(this.state.studentsInfo, options1)
+
+    // console.log("tech",fuse1.search('material ui'))
   }
 
   filterByLocation(location) {
@@ -129,8 +139,12 @@ export default class Home extends React.Component {
       location: location
     });
 
-    const filtered = this.state.studentsInfo.filter(studentInfo =>
-      studentInfo.basics.location.country === this.state.location);
+
+    var filtered = Object.assign([], this.state.studentsInfo);
+    console.log(filtered);
+    filtered = filtered.filter(studentInfo =>
+      studentInfo.basics.location.country.toLowerCase() === this.state.location.toLowerCase());
+    console.log("LOCATION" + filtered);
     this.setState({
       // need to understand why it doesn't work
       displayedResults: location.toLowerCase() === 'any' ? this.state.studentsInfo : filtered
@@ -139,14 +153,19 @@ export default class Home extends React.Component {
 
   render() {
     const typed = this.state.typed;
+    const locationOptions = {
+      keys: ['basics.location.country'],
+    };
+    const locationFuse = new Fuse(this.state.studentsInfo, locationOptions)
+    console.log('locationFuse', locationFuse)
     return (
       <div>
         <Header
           search={this.state.search}
           searchClick={this.searchClick}
           searchChange={this.searchChange}
+          filterByLocation={this.filterByLocation}
         />
-        <FilterLocation filterByLocation={this.filterByLocation} />
         <h1 className="home">Discover the profiles of our Fullstack Junior Developers</h1>
         <section>
           {typed

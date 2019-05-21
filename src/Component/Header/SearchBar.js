@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, InputGroupAddon, InputGroupText, InputGroup } from 'reactstrap';
+import { Input, InputGroupAddon, Button, InputGroup } from 'reactstrap';
 
 const SearchBar = ({ searchClick, searchChange }) => {
   return (
@@ -15,7 +15,7 @@ const SearchBar = ({ searchClick, searchChange }) => {
       <InputGroup>
         <Input type="search" placeholder="search" onChange={searchChange} />
         <InputGroupAddon addonType="append" onClick={searchClick}>
-          <InputGroupText>Go</InputGroupText>
+          <Button>Go</Button>
         </InputGroupAddon>
       </InputGroup>
     </div>
