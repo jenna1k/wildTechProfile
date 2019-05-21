@@ -19,7 +19,6 @@ export default class Home extends React.Component {
       search: '', // will be updated when user type according to searchChange()
       filteredBySearch: [], // will be updated by searchChange() & searchClick()
       typed: false, // to display filteredBySearch after fetching api
-      displayedResults: [],
       location: 'any',
       filteredByLocation: []
     };
@@ -31,7 +30,7 @@ export default class Home extends React.Component {
       .then(data =>
         this.setState({
           studentsInfo: data,
-          displayedResults: data
+          filteredByLocation: data
         })
       )
       .catch(() => alert('error api'));
@@ -137,18 +136,15 @@ export default class Home extends React.Component {
   filterByLocation(location) {
     this.setState({
       location: location
-    });
+    }, console.log("loaction " + this.state.location, location));
 
-
-    var filtered = Object.assign([], this.state.studentsInfo);
-    console.log(filtered);
-    filtered = filtered.filter(studentInfo =>
-      studentInfo.basics.location.country.toLowerCase() === this.state.location.toLowerCase());
-    console.log("LOCATION" + filtered);
     this.setState({
-      // need to understand why it doesn't work
-      displayedResults: location.toLowerCase() === 'any' ? this.state.studentsInfo : filtered
-    })
+      filteredByLocation: location.toLowerCase() === 'any'
+        ? this.state.studentsInfo
+        : this.state.studentsInfo.filter(studentInfo =>
+          studentInfo.basics.location.country.toLowerCase() === location.toLowerCase()
+        )
+    });
   }
 
   render() {

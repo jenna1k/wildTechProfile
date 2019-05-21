@@ -30,7 +30,7 @@ export default class FilterLocation extends React.Component {
     });
 
     if (this.props.filterByLocation != null) {
-      this.props.filterByLocation(e.currentTarget.value);
+      this.props.filterByLocation(e.target.value);
     }
   }
 
