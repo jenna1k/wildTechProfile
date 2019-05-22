@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './Header.css';
 import SearchBar from './SearchBar';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
-import DropdownTreeSelect from 'react-dropdown-tree-select';
 import 'react-dropdown-tree-select/dist/styles.css';
-import techOptions from './data.json';
 import FilterProgrammingLanguages from '../Filters/FilterProgrammingLanguages';
 class Header extends Component {
   constructor(props) {
@@ -33,7 +31,7 @@ class Header extends Component {
         <Navbar color="light" light expand="md" fixed="top" className="wcs-header">
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar className="wcs-header-items">
+            <Nav className="wcs-header-items" navbar>
               <div className="wcs-header-searchfilter">
                 <img
                   src="https://i.imgur.com/emFe3O8.jpg"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, FormText, Input } from 'reactstrap';
 
 export default class FilterProgrammingLanguages extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class FilterProgrammingLanguages extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (state.skills != props.filter) {
+    if (state.skills !== props.filter) {
       return {
         skills: props.filter
       };
@@ -40,13 +40,13 @@ export default class FilterProgrammingLanguages extends React.Component {
     return (
       <div className="select-filter">
         <FormGroup>
-          <Label for="select-filter">Programming Language:</Label>
           <Input type="select" name="select" id="select-filter" onChange={this.setFilter}>
             <option key="any">Any</option>
             {this.state.skills.map(skill => (
               <option key={skill.toLowerCase()}>{skill}</option>
             ))}
           </Input>
+          <FormText>Programming Language</FormText>
         </FormGroup>
       </div>
     );

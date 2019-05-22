@@ -24,7 +24,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log('[Home] ComponientDidMount');
     fetch('https://api-resume.herokuapp.com/api/v1/resume')
       .then(response => response.json())
       .then(data => {
@@ -51,17 +50,9 @@ class Home extends Component {
         });
       })
       .catch(() => alert('error api'));
-    // test for getting unique value
-    console.log('studentsInfo : ', this.state.studentsInfo.map(elem => elem));
-    const uniqueCountry = [
-      ...new Set(this.state.studentsInfo.map(item => item.basics.location.country))
-    ];
-    console.log('unique country : ', uniqueCountry);
   }
 
   searchClick(e) {
-    console.log('input is : ', this.state.search);
-
     // fuse.js library setting
     let options = {
       tokenize: true,
@@ -75,19 +66,13 @@ class Home extends Component {
       keys: ['favorite_programming_languages']
     };
     let fuse = new Fuse(this.state.studentsInfo, options);
-    console.log(fuse.search(this.state.search));
 
     this.setState({
       filteredBySearch: fuse.search(this.state.search) // update filtered list
     });
-
-    console.log(this.state.filteredBySearch);
   }
 
   searchChange(e) {
-    // debugger
-    // console.log(e.target)
-    // return
     let options = {
       tokenize: true,
       matchAllTokens: true,
@@ -122,21 +107,13 @@ class Home extends Component {
       applyFilter: e.target.value === '' ? false : true, // if input is empty show initial student list otherwise sho filtered list
       filteredBySearch: fuse.search(this.state.search) // update filtered list
     });
-    console.log(e.target.value);
-
-    // let options1  ={
-    //   keys: ['projects.technologies']
-    // };
-    // let fuse1 = new Fuse(this.state.studentsInfo, options1)
-
-    // console.log("tech",fuse1.search('material ui'))
   }
 
   filterBy(filterName = 'programmingSkills', value = 'any') {
     switch (filterName) {
       case 'programmingSkills':
         //to do:
-        console.log('filter:programmingSkills', value);
+        //console.log('filter:programmingSkills', value);
         this.createDeckHandler(value);
         break;
 
@@ -146,7 +123,6 @@ class Home extends Component {
   }
 
   createDeckHandler(searchValue) {
-    console.log('filter:createDeckHandler', searchValue);
     let options = {
       tokenize: true,
       matchAllTokens: true,
@@ -159,7 +135,6 @@ class Home extends Component {
       keys: ['favorite_programming_languages', 'projects.technologies']
     };
     let fuse = new Fuse(this.state.studentsInfo, options);
-    console.log(fuse.search(searchValue));
 
     this.setState({
       filteredBySearch: fuse.search(searchValue),
@@ -170,13 +145,8 @@ class Home extends Component {
   render() {
     const listSkills = this.state.listProgrammingSkills;
 
-    console.log('render...');
     const applyFilter = this.state.applyFilter;
-    const locationOptions = {
-      keys: ['basics.location.country']
-    };
-    const locationFuse = new Fuse(this.state.studentsInfo, locationOptions);
-    console.log('locationFuse', locationFuse);
+
     return (
       <div className="text-center">
         <Header
@@ -192,15 +162,15 @@ class Home extends Component {
             <Row>
               {applyFilter
                 ? this.state.filteredBySearch.map(filteredStudent => (
-                    <Col>
-                      <SmallCard {...filteredStudent} />
-                    </Col>
-                  ))
+                  <Col key={filteredStudent.basics.name} sm="6" md="4" lg="3">
+                    <SmallCard {...filteredStudent} />
+                  </Col>
+                ))
                 : this.state.studentsInfo.map(studentInfo => (
-                    <Col>
-                      <SmallCard {...studentInfo} />
-                    </Col>
-                  ))}
+                  <Col key={studentInfo.basics.name} sm="6" md="4" lg="3">
+                    <SmallCard {...studentInfo} />
+                  </Col>
+                ))}
             </Row>
           </Container>
         </section>
