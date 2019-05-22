@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './Header.css';
 import SearchBar from './SearchBar';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
-import DropdownTreeSelect from 'react-dropdown-tree-select'
-import 'react-dropdown-tree-select/dist/styles.css'
+import DropdownTreeSelect from 'react-dropdown-tree-select';
+import 'react-dropdown-tree-select/dist/styles.css';
 import techOptions from './data.json';
-
+import FilterProgrammingLanguages from '../Filters/FilterProgrammingLanguages';
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +21,6 @@ class Header extends Component {
     });
   }
   render() {
-
     //logic for filter
     //parse all students and look in key projects->tech
     //create an array techList
@@ -53,7 +52,15 @@ class Header extends Component {
                 {/* DropdownTreeSelect for filter function */}
                 {/* data will be replaced with json from API */}
                 {/* onChange() will be added */}
-                <DropdownTreeSelect data={techOptions} placeholderText="Tech experience"/>
+                {/* <DropdownTreeSelect
+                  data={techOptions}
+                  placeholderText='Tech experience'
+                /> */}
+
+                <FilterProgrammingLanguages
+                  filter={this.props.listSkills}
+                  filterBy={this.props.filterBy}
+                />
               </div>
             </Nav>
           </Collapse>
