@@ -4,10 +4,11 @@ import './Footer.css';
 const Footer = () => (
   <footer className="footer">
     <span>
-      Made with <i class="fas fa-heart" /> & <i className="fas fa-coffee" /> by{' '}
+      Made with <i className="fas fa-heart" /> & <i className="fas fa-coffee" /> by{' '}
       <a
         href="https://github.com/jenna1k/wildTechProfile"
         target="_blank"
+        rel="noopener noreferrer"
         className="link color-inherit hover-white">
         Wild
       </a>{' '}

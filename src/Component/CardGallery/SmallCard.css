@@ -1,28 +1,30 @@
 .avatar-card {
-  width:"60%";
-  height:"80%";
+  height: 95%;
 }
 .avatar-card-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50px;
+  width: auto;
+  max-height: 200px;
 }
+
 .avatar-title {
 color: "black";
 text-align: "justify";
 font-size: "5%";
 }
 
+div.card-body {
+  margin-bottom: 20px;
+  bottom: 0;
+}
 
 .avatar-subtitle{
 color:'black';
 text-align:"justify";
 font-size:"2%";
 }
-/* .avatar-social-icon {
-
+.avatar-social-icon {
+  padding: 5px;
 }
-.avatar-more-icon {
-
-} */

@@ -15,7 +15,7 @@ export default class FilterProgrammingLanguages extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (state.skills != props.filter) {
+    if (state.skills !== props.filter) {
       return {
         skills: props.filter
       };
