@@ -5,6 +5,7 @@ import './Home.css';
 import Header from './Component/Header/Header';
 import Footer from './Component/Footer/Footer';
 import { Col, Row, Container } from 'reactstrap';
+import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
 class Home extends Component {
   constructor(props) {
@@ -34,18 +35,11 @@ class Home extends Component {
         //todo: update filterList
         this.setState({
           listProgrammingSkills: [
-            'html',
-            'css',
-            'js',
-            'react',
-            'bootstrap',
-            'git',
-            'github',
-            'npm',
-            'reactstrap',
-            'netlify',
-            'vue',
-            'material ui'
+            { label: 'html', value: 1},
+            { label: 'css', value: 2},
+            { label: 'js', value: 3},
+            { label: 'bootstrap', value: 4},
+            { label: 'git', value: 5},
           ]
         });
       })

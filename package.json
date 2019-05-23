@@ -13,6 +13,7 @@
     "react-dom": "^16.8.6",
     "react-dropdown-tree-select": "^1.20.1",
     "react-icons": "^2.2.7",
+    "react-multiselect-checkboxes": "^0.1.1",
     "react-scripts": "3.0.1",
     "reactstrap": "^8.0.0"
   },
