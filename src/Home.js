@@ -35,11 +35,11 @@ class Home extends Component {
         //todo: update filterList
         this.setState({
           listProgrammingSkills: [
-            { label: 'html', value: 1},
-            { label: 'css', value: 2},
-            { label: 'js', value: 3},
-            { label: 'bootstrap', value: 4},
-            { label: 'git', value: 5},
+            { label: 'html', value: 1 },
+            { label: 'css', value: 2 },
+            { label: 'js', value: 3 },
+            { label: 'bootstrap', value: 4 },
+            { label: 'git', value: 5 },
           ]
         });
       })
@@ -116,8 +116,9 @@ class Home extends Component {
     }
   }
 
-  createDeckHandler(searchValue) {
+  createDeckHandler(searchArray) {
     let options = {
+      caseSensitive: false,
       tokenize: true,
       matchAllTokens: true,
       findAllMatches: true,
@@ -129,9 +130,21 @@ class Home extends Component {
       keys: ['favorite_programming_languages', 'projects.technologies']
     };
     let fuse = new Fuse(this.state.studentsInfo, options);
+    let results = []
+    if (Array.isArray(searchArray)) {
+      results = searchArray.map(arrayItem => fuse.search(arrayItem.label))
+      console.log(results)
+    };
+
+    let mergedArray = [];
+    results.forEach(array => {
+      mergedArray = mergedArray.concat(array);
+    });
+
+    // to do: leave only cards that repeated the same number of times as rnum of checkboxes checked 
 
     this.setState({
-      filteredBySearch: fuse.search(searchValue),
+      filteredBySearch: mergedArray,
       applyFilter: true
     });
   }
