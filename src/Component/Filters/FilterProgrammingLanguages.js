@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormGroup, FormText, Input } from 'reactstrap';
+import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
 export default class FilterProgrammingLanguages extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ export default class FilterProgrammingLanguages extends React.Component {
 
     this.state = {
       skills: props.filter,
-      selected: null
+      selected: []
     };
     // props.filter
 
@@ -27,19 +28,21 @@ export default class FilterProgrammingLanguages extends React.Component {
   }
 
   setFilter(e) {
-    const result = e.target.value.toLowerCase();
-
     this.setState({
-      selected: result
+      selected: e
     });
 
-    this.props.filterBy('programmingSkills', result);
+    // this.props.filterBy('programmingSkills', options);
   }
 
   render() {
+    const options = [];
+    this.state.skills.forEach(function (skill) {
+      options.push({ label: skill, value: skill });
+    });
     return (
       <div className="select-filter">
-        <FormGroup>
+        {/* <FormGroup>
           <Input type="select" name="select" id="select-filter" onChange={this.setFilter}>
             <option key="any">Any</option>
             {this.state.skills.map(skill => (
@@ -47,7 +50,8 @@ export default class FilterProgrammingLanguages extends React.Component {
             ))}
           </Input>
           <FormText>Programming Language</FormText>
-        </FormGroup>
+        </FormGroup> */}
+        <ReactMultiSelectCheckboxes options={options} onClick={this.setFilter} />
       </div>
     );
   }
